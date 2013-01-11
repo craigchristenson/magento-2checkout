@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+
+<!--
+/*
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Craig Christenson
+ * @package    Tco (2Checkout.com)
+ * @copyright  Copyright (c) 2010 Craig Christenson
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+<config>
+    <modules>
+        <Craig_Tco>
+            <version>2.2.1</version>
+        </Craig_Tco>
+    </modules>
+    <global>
+    	<models>
+    		<tco>
+	    		<class>Craig_Tco_Model</class>
+	    	</tco>
+    	</models>
+    	<helpers>
+    		<tco>
+    			<class>Craig_Tco_Helper</class>
+    		</tco>
+    	</helpers>
+    	<blocks>
+            <tco>
+            	<class>Craig_Tco_Block</class>
+            </tco>
+        </blocks>
+        <resources>
+            <tco_setup>
+                <setup>
+                    <module>Craig_Tco</module>
+                </setup>
+                <connection>
+                    <use>directory_setup</use>
+                </connection>
+            </tco_setup>
+            <tco_write>
+                <connection>
+                    <use>local_write</use>
+                </connection>
+            </tco_write>
+            <tco_read>
+                <connection>
+                    <use>local_read</use>
+                </connection>
+            </tco_read>
+        </resources>
+      <events>
+        <sales_order_creditmemo_refund>
+          <observers>
+            <issue_creditmemo_refund>
+              <type>singleton</type>
+              <class>Craig_Tco_Model_Observer</class>
+              <method>issue_creditmemo_refund</method>
+            </issue_creditmemo_refund>
+          </observers>
+        </sales_order_creditmemo_refund>
+
+      </events>
+    </global>
+    <frontend>
+        <routers>
+            <tco>
+                <use>standard</use>
+                <args>
+                    <module>Craig_Tco</module>
+                    <frontName>tco</frontName>
+                </args>
+            </tco>
+        </routers>
+        <secure_url>
+            <tco_redirect>/tco/redirect/</tco_redirect>
+        </secure_url>
+    </frontend>
+	<default>
+        <payment>
+            <tco>
+                <active>1</active>
+                <submit_url>1</submit_url>
+                <model>tco/checkout</model>
+                <title>2Checkout (Visa, MasterCard, Amex, Discover, JCB, Diners Club, Debit Card, PayPal)</title>
+                <sid>Enter 2Checkout Account Number</sid>
+                <secret_word>Enter your Secret Word</secret_word>
+		        <submit_url>1</submit_url>
+        		<demo>0</demo>
+                <sort_order>1</sort_order>
+            </tco>
+        </payment>
+    </default>
+</config>

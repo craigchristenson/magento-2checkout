@@ -1,0 +1,187 @@
+<?xml version="1.0"?>
+
+<!--
+/*
+ * Magento
+ *
+ * NOTICE OF LICENSE
+ *
+ * This source file is subject to the Open Software License (OSL 3.0)
+ * that is bundled with this package in the file LICENSE.txt.
+ * It is also available through the world-wide-web at this URL:
+ * http://opensource.org/licenses/osl-3.0.php
+ * If you did not receive a copy of the license and are unable to
+ * obtain it through the world-wide-web, please send an email
+ * to license@magentocommerce.com so we can send you a copy immediately.
+ *
+ * @category   Craig Christenson
+ * @package    Tco (2Checkout.com)
+ * @copyright  Copyright (c) 2010 Craig Christenson
+ * @license    http://opensource.org/licenses/osl-3.0.php  Open Software License (OSL 3.0)
+ */
+-->
+
+<config>
+    <sections>
+        <payment>
+        	<groups>
+                  <tco translate="label">
+                    <label>2Checkout</label>
+                    <frontend_type>text</frontend_type>
+                    <sort_order>0</sort_order>
+                    <show_in_default>1</show_in_default>
+                    <show_in_website>1</show_in_website>
+                    <show_in_store>1</show_in_store>
+                    <fields>
+                        <title translate="label">
+                            <label>Title</label>
+                            <frontend_type>text</frontend_type>
+                            <sort_order>1</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>1</show_in_store>
+                        </title>
+                        <active translate="label">
+                            <label>Enabled</label>
+                            <frontend_type>select</frontend_type>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <sort_order>2</sort_order>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </active>
+                            <sid translate="label">
+                              <label>2Checkout Account Number</label>
+                              <comment>**Required**</comment>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>3</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </sid>
+                            <username translate="label">
+                              <label>API Username</label>
+                              <comment>Required if 'Live Refunds' is set to 'Yes'.</comment>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>4</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </username>
+                            <password translate="label">
+                              <label>API Password</label>
+                              <comment>Required if 'Live Refunds' is set to 'Yes'.</comment>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>5</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </password>
+                            <secret_word translate="label">
+                              <label>Secret Word</label>
+                              <comment>**Required** Please enter the same value that you set on your 2Checkout Site Management page.</comment>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>6</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </secret_word>
+                            <refund translate="label">
+                              <label>Live Refunds</label>
+                              <comment>**IMPORTANT** Requires API Username and Password. Select 'Yes' to enable live refunds through 2Checkout when sending credit memos in Magento. This will actually issue refunds for the credit memo amount.</comment>
+                              <frontend_type>select</frontend_type>
+                              <sort_order>9</sort_order>
+                              <source_model>adminhtml/system_config_source_yesno</source_model>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </refund>
+                            <demo translate="label">
+                              <label>2Checkout Demo Mode</label>
+                              <frontend_type>select</frontend_type>
+                              <sort_order>10</sort_order>
+                              <source_model>adminhtml/system_config_source_yesno</source_model>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </demo>
+                             <invoice_on_fraud translate="label">
+                              <label>Invoice Automatically After 2Checkout Fraud
+                              Review</label>
+                              <comment>Automatically issues magento invoice after
+                                2Checkout fraud review passes. If you are
+                                offering downloadable products this would
+                                enable downloads.</comment>
+                              <frontend_type>select</frontend_type>
+                              <sort_order>11</sort_order>
+                              <source_model>adminhtml/system_config_source_yesno</source_model>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </invoice_on_fraud>
+                            <invoice_on_order translate="label">
+                              <label>Invoice Automatically Before 2Checkout
+                                Fraud Review</label>
+                              <comment>Automatically issues magento invoice
+                                when sale is processed by 2Checkout. If you are
+                                offering downloadable products this would
+                                enable downloads</comment>
+                              <frontend_type>select</frontend_type>
+                              <sort_order>12</sort_order>
+                              <source_model>adminhtml/system_config_source_yesno</source_model>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </invoice_on_order>
+                            <allowspecific translate="label">
+                              <label>Payment Applicable From</label>
+                              <frontend_type>select</frontend_type>
+                              <sort_order>13</sort_order>
+                              <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </allowspecific>
+                            <specificcountry translate="label">
+                              <label>Countries Payment Applicable From</label>
+                              <frontend_type>multiselect</frontend_type>
+                              <sort_order>14</sort_order>
+                              <source_model>adminhtml/system_config_source_country</source_model>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </specificcountry>
+                            <checkout_language translate="label">
+                              <label>Checkout Language Code</label>
+                              <comment>**Defaults to English** Enter your preferred 2Checkout language code to translate the checkout page.
+                                <![CDATA[<a href="https://www.2checkout.com/blog/knowledge-base/merchants/tech-support/multi-language-options/do-you-offer-any-languages-other-than-english/">2Checkout Language Code Reference</a>]]>
+                              </comment>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>15</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </checkout_language>
+                            <redirect_message translate="label">
+                              <label>Redirect Message</label>
+                              <comment>You will be redirected to 2Checkout in a few seconds.</comment>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>15</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </redirect_message>
+                            <sort_order translate="label">
+                              <label>Sort order</label>
+                              <frontend_type>text</frontend_type>
+                              <sort_order>16</sort_order>
+                              <show_in_default>1</show_in_default>
+                              <show_in_website>1</show_in_website>
+                              <show_in_store>0</show_in_store>
+                            </sort_order>
+                    </fields>
+                </tco>
+        	</groups>
+        </payment>
+    </sections>
+</config>

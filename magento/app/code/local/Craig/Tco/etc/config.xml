@@ -24,7 +24,7 @@
 <config>
     <modules>
         <Craig_Tco>
-            <version>2.2.1</version>
+            <version>2.4.0</version>
         </Craig_Tco>
     </modules>
     <global>
@@ -64,6 +64,15 @@
             </tco_read>
         </resources>
       <events>
+        <controller_action_postdispatch_checkout_onepage_saveOrder>
+          <observers>
+            <output_tco_redirect>
+              <type>singleton</type>
+              <class>Craig_Tco_Model_Observer</class>
+              <method>output_tco_redirect</method>
+            </output_tco_redirect>
+          </observers>
+        </controller_action_postdispatch_checkout_onepage_saveOrder>
         <sales_order_creditmemo_refund>
           <observers>
             <issue_creditmemo_refund>
@@ -73,10 +82,16 @@
             </issue_creditmemo_refund>
           </observers>
         </sales_order_creditmemo_refund>
-
       </events>
     </global>
     <frontend>
+        <layout>
+            <updates>
+                <tco>
+                    <file>tco.xml</file>
+                </tco>
+            </updates>
+        </layout>
         <routers>
             <tco>
                 <use>standard</use>

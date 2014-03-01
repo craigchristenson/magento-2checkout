@@ -29,23 +29,33 @@ class Craig_Tco_Block_Redirect extends Mage_Core_Block_Abstract
 
         $form = new Varien_Data_Form();
         $form->setAction($tco->getUrl())
-            ->setId('pay')
-            ->setName('pay')
+            ->setId('tcopay')
+            ->setName('tcopay')
             ->setMethod('POST')
             ->setUseContainer(true);
         $tco->getFormFields();
         foreach ($tco->getFormFields() as $field=>$value) {
            $form->addField($field, 'hidden', array('name'=>$field, 'value'=>$value, 'size'=>200));
         }
+        $form->addField('tcosubmit', 'submit', array('name'=>'tcosubmit'));
 
-        $html = '<html><body>';
-        $html.= $tco->getRedirectMessage();
-        $html.= $form->toHtml();
-        $html.= '<br>';
-        $html.= '<script type="text/javascript">document.getElementById("pay").submit();</script>';
-        $html.= '</body></html>';
+        $html = '<style> #tcosubmit {display:none;} </style>';
 
-
+        if ($tco->getDisplay()) {
+            //inline mode
+            $html .= $form->toHtml();
+            $html.= '<script type="text/javascript">function formSubmit(){ document.getElementById("tcopay").submit();}
+                    window.onload=function(){
+                        formSubmit();
+                    };</script>';
+        } else {
+            //dynamic mode
+            $html .= $form->toHtml();
+            $html.= '<script type="text/javascript">function formSubmit(){ document.getElementById("tcopay").submit();}
+                    window.onload=function(){
+                        formSubmit();
+                    };</script>';
+        }
         return $html;
     }
 }

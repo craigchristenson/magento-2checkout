@@ -35,16 +35,14 @@ class Craig_Tco_RedirectController extends Mage_Core_Controller_Front_Action {
     }
 
     public function indexAction() {
-        $this->getResponse()
-                ->setHeader('Content-type', 'text/html; charset=utf8')
-                ->setBody($this->getLayout()
-                ->createBlock('tco/redirect')
-                ->toHtml());
+        $this->loadLayout();
+        $block = $this->getLayout()->createBlock('tco/redirect');
+        $this->getLayout()->getBlock('content')->append($block);
+        $this->renderLayout();
     }
 
     public function successAction() {
         $post = $this->getRequest()->getPost();
-        $insMessage = $this->getRequest()->getPost();
         foreach ($_REQUEST as $k => $v) {
             $v = htmlspecialchars($v);
             $v = stripslashes($v);
@@ -58,7 +56,7 @@ class Craig_Tco_RedirectController extends Mage_Core_Controller_Front_Action {
         $order->loadByIncrementId($session->getLastRealOrderId());
         $hashSecretWord = Mage::getStoreConfig('payment/tco/secret_word');
         $hashSid = Mage::getStoreConfig('payment/tco/sid');
-        $hashTotal = number_format($order->getBaseGrandTotal(), 2, '.', '');
+        $hashTotal = number_format($order->getGrandTotal(), 2, '.', '');
 
         if (Mage::getStoreConfig('payment/tco/demo') == '1') {
             $hashOrder = '1';
@@ -82,6 +80,17 @@ class Craig_Tco_RedirectController extends Mage_Core_Controller_Front_Action {
         }
     }
 
-}
+    public function cartAction() {
+        $session = Mage::getSingleton('checkout/session');
+        if ($session->getLastRealOrderId()) {
+            $order = Mage::getModel('sales/order')->loadByIncrementId($session->getLastRealOrderId());
+            if ($order->getId()) {
+                $order->cancel()->save();
+            }
+            $quote = Mage::getModel('sales/quote')->load($order->getQuoteId());
+            $quote->setIsActive(true)->save();
+        }
+        $this->_redirect('checkout/cart');
+    }
 
-?>
+}

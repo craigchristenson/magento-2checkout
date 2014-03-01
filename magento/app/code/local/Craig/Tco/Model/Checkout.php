@@ -48,6 +48,16 @@ class Craig_Tco_Model_Checkout extends Mage_Payment_Model_Method_Abstract {
 	return $demo;
 	}
 
+//get Checkout Display
+    public function getDisplay() {
+        if ($this->getConfigData('inline') == '1') {
+            $display = true;
+        } else {
+            $display = false;
+        }
+        return $display;
+    }
+
 //get purchase routine URL
     public function getUrl() {
     	$url = "https://www.2checkout.com/checkout/purchase";

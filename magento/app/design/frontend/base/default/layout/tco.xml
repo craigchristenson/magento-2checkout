@@ -1,0 +1,9 @@
+<layout version="0.1.0">
+    <checkout_onepage_review>
+        <reference name="checkout.onepage.review.info.items.after">
+            <block type="tco/iframe" name="tco.iframe" as="tco_iframe">
+                <action method="setBlockId"><block_id>tcoiframe</block_id></action>
+            </block>
+        </reference>
+    </checkout_onepage_review>
+</layout>

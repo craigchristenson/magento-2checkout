@@ -41,22 +41,22 @@ class Craig_Tco_NotificationController extends Mage_Core_Controller_Front_Action
         $order->loadByIncrementId($insMessage['vendor_order_id']);
         $invoice_on_fraud = Mage::getStoreConfig('payment/tco/invoice_on_fraud');
         $invoice_on_order = Mage::getStoreConfig('payment/tco/invoice_on_order');
-       	$hashSecretWord = Mage::getStoreConfig('payment/tco/secret_word');
-       	$hashSid = $insMessage['vendor_id'];
+        $hashSecretWord = Mage::getStoreConfig('payment/tco/secret_word');
+        $hashSid = $insMessage['vendor_id'];
         $hashOrder = $insMessage['sale_id'];
         $hashInvoice = $insMessage['invoice_id'];
         $StringToHash = strtoupper(md5($hashOrder . $hashSid . $hashInvoice . $hashSecretWord));
 
-        if ($StringToHash != $insMessage['md5_hash'] && number_format($order->getBaseGrandTotal(), 2, '.', '') != $insMessage['invoice_list_amount']) {
+        if ($StringToHash != $insMessage['md5_hash'] && number_format($order->getGrandTotal(), 2, '.', '') != $insMessage['invoice_list_amount']) {
             $order->addStatusHistoryComment('Hash or total did not match!');
             $order->save();
             die('Hash Incorrect');
         } else {
             if ($insMessage['message_type'] == 'FRAUD_STATUS_CHANGED') {
                 if ($insMessage['fraud_status'] == 'fail') {
-            	$order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true)->addStatusHistoryComment('Order failed fraud review.')->save();
+                $order->setState(Mage_Sales_Model_Order::STATE_CANCELED, true)->addStatusHistoryComment('Order failed fraud review.')->save();
                 } else if ($insMessage['fraud_status'] == 'pass') {
-            	    $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->addStatusHistoryComment('Order passed fraud review.')->save();
+                    $order->setState(Mage_Sales_Model_Order::STATE_PROCESSING, true)->addStatusHistoryComment('Order passed fraud review.')->save();
                     if ($invoice_on_fraud == '1') {
                         try {
                             if(!$order->canInvoice()) {

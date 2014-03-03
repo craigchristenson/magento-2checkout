@@ -79,7 +79,7 @@ class Craig_Tco_Model_Observer extends Mage_Core_Block_Abstract {
                     tcohead.appendChild(tcoscript);
                     var checkoutOrderBtn = $$("button.btn-checkout");
                     checkoutOrderBtn[0].removeAttribute("onclick");
-                    checkoutOrderBtn[0].addEventListener("click", formSubmit, false);
+                    checkoutOrderBtn[0].observe("click", formSubmit);
                     new PeriodicalExecuter(function(pe) {
                         if (typeof window["inline_2Checkout"] != "undefined")
                         {
@@ -102,7 +102,7 @@ class Craig_Tco_Model_Observer extends Mage_Core_Block_Abstract {
                     }
                     var checkoutOrderBtn = $$("button.btn-checkout");
                     checkoutOrderBtn[0].removeAttribute("onclick");
-                    checkoutOrderBtn[0].addEventListener("click", formSubmit, false);
+                    checkoutOrderBtn[0].observe("click", formSubmit);
                     formSubmit();
                 </script>';
             }

@@ -6,4 +6,9 @@
             </block>
         </reference>
     </checkout_onepage_review>
+    <tco_redirect_index>
+    	<reference name="root">
+    		<action method="setTemplate"><template>page/empty.phtml</template></action>
+    	</reference>
+    </tco_redirect_index>
 </layout>

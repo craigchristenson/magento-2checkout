@@ -42,6 +42,8 @@ class Craig_Tco_Block_Redirect extends Mage_Core_Block_Abstract
         $html = '<style> #tcosubmit {display:none;} </style>';
         $html .= $form->toHtml();
 
+        $html .= '<script type="text/javascript">document.getElementById("tcopay").submit();</script>';
+
         return $html;
     }
 }

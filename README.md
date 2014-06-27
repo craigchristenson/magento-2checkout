@@ -2,7 +2,7 @@
 
 ## 2Checkout Payment Extension
 
-This extension utilizes 2Checkouts back office API and Instant Notification Service to provide you with the ability to do all of your sales management from Magento. It has been extensively tested, is used by many 2Checkout clients and is updated with each Magento community release.
+This extension utilizes 2Checkouts back office API and Instant Notification Service to provide you with the ability to do all of your sales management from Magento. Additionally, this extension supports the 2Checkout Sandbox, so you can use this extension with your 2CO Sandbox account. It has been extensively tested, is used by many 2Checkout clients and is updated with each Magento community release.
 
 ### Installation
 

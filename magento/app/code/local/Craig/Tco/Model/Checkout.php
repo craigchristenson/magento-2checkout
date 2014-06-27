@@ -60,7 +60,11 @@ class Craig_Tco_Model_Checkout extends Mage_Payment_Model_Method_Abstract {
 
     //get purchase routine URL
     public function getUrl() {
-        $url = "https://www.2checkout.com/checkout/purchase";
+        if ($this->getConfigData('sandbox') == '1') {
+            $url = "https://sandbox.2checkout.com/checkout/purchase";
+        } else {
+            $url = "https://www.2checkout.com/checkout/purchase";
+        }
         return $url;
     }
 

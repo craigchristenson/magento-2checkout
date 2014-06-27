@@ -105,10 +105,19 @@
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
                         </inline>
+                        <sandbox translate="label">
+                            <label>2Checkout Sandbox Mode</label>
+                            <frontend_type>select</frontend_type>
+                            <sort_order>11</sort_order>
+                            <source_model>adminhtml/system_config_source_yesno</source_model>
+                            <show_in_default>1</show_in_default>
+                            <show_in_website>1</show_in_website>
+                            <show_in_store>0</show_in_store>
+                        </sandbox>
                         <demo translate="label">
                             <label>2Checkout Demo Mode</label>
                             <frontend_type>select</frontend_type>
-                            <sort_order>11</sort_order>
+                            <sort_order>12</sort_order>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -122,7 +131,7 @@
                                 offering downloadable products this would
                                 enable downloads.</comment>
                             <frontend_type>select</frontend_type>
-                            <sort_order>12</sort_order>
+                            <sort_order>13</sort_order>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -136,7 +145,7 @@
                                 offering downloadable products this would
                                 enable downloads</comment>
                             <frontend_type>select</frontend_type>
-                            <sort_order>13</sort_order>
+                            <sort_order>14</sort_order>
                             <source_model>adminhtml/system_config_source_yesno</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -145,7 +154,7 @@
                         <allowspecific translate="label">
                             <label>Payment Applicable From</label>
                             <frontend_type>select</frontend_type>
-                            <sort_order>14</sort_order>
+                            <sort_order>15</sort_order>
                             <source_model>adminhtml/system_config_source_payment_allspecificcountries</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -154,7 +163,7 @@
                         <specificcountry translate="label">
                             <label>Countries Payment Applicable From</label>
                             <frontend_type>multiselect</frontend_type>
-                            <sort_order>15</sort_order>
+                            <sort_order>16</sort_order>
                             <source_model>adminhtml/system_config_source_country</source_model>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
@@ -166,7 +175,7 @@
                                 <![CDATA[<a href="https://www.2checkout.com/blog/knowledge-base/merchants/tech-support/multi-language-options/do-you-offer-any-languages-other-than-english/">2Checkout Language Code Reference</a>]]>
                             </comment>
                             <frontend_type>text</frontend_type>
-                            <sort_order>16</sort_order>
+                            <sort_order>17</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -175,7 +184,7 @@
                             <label>Redirect Message</label>
                             <comment>You will be redirected to 2Checkout in a few seconds.</comment>
                             <frontend_type>text</frontend_type>
-                            <sort_order>17</sort_order>
+                            <sort_order>18</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>
@@ -183,7 +192,7 @@
                         <sort_order translate="label">
                             <label>Sort order</label>
                             <frontend_type>text</frontend_type>
-                            <sort_order>18</sort_order>
+                            <sort_order>19</sort_order>
                             <show_in_default>1</show_in_default>
                             <show_in_website>1</show_in_website>
                             <show_in_store>0</show_in_store>

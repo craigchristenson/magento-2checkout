@@ -65,7 +65,7 @@ class Craig_Tco_Model_Observer extends Mage_Core_Block_Abstract {
             if (Mage::getStoreConfig('payment/tco/inline') == '1') {
                 $js = '<script>
                     document.getElementById("review-please-wait").style["display"] = "block";
-                    if ($$("a.top-link-cart")) {
+                    if ($$("a.top-link-cart").length) {
                         $$("a.top-link-cart")[0].href = "'.Mage::getUrl('tco/redirect/cart', array('_secure' => true)).'";
                     }
                     if ($$("p.f-left").length !== 0) {
@@ -91,7 +91,7 @@ class Craig_Tco_Model_Observer extends Mage_Core_Block_Abstract {
             } else {
                 $js = '<script>
                     document.getElementById("review-please-wait").style["display"] = "block";
-                    if ($$("a.top-link-cart")) {
+                    if ($$("a.top-link-cart").length) {
                         $$("a.top-link-cart")[0].href = "'.Mage::getUrl('tco/redirect/cart', array('_secure' => true)).'";
                     }
                     if ($$("p.f-left").length !== 0) {
